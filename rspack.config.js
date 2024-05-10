@@ -1,14 +1,23 @@
 const rspack = require('@rspack/core');
 const refreshPlugin = require('@rspack/plugin-react-refresh');
 const isDev = process.env.NODE_ENV === 'development';
+// const path = require('path');
 /**
  * @type {import('@rspack/cli').Configuration}
  */
+
 module.exports = {
   context: __dirname,
   entry: {
     main: './src/index.js',
   },
+  // output: {
+  //   path: path.resolve(__dirname, 'dist'),
+  //   filename: 'bundle.js',
+  //   publicPath: '/',
+  //   library: 'Pages',
+  //   libraryTarget: 'umd',
+  // },
   devServer: {
     historyApiFallback: true,
     port: 3001,
@@ -77,7 +86,7 @@ module.exports = {
     new rspack.container.ModuleFederationPlugin({
       name: 'sub_project',
       filename: 'subProjectEntry.js',
-      exposes: { './Counter': './src/Counter' },
+      exposes: { './Counter': './src/Pages/Counter' },
       shared: {
         react: { eager: true },
         'react-dom': { eager: true },

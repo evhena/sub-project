@@ -1,7 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Counter from './Pages/Counter';
 
-import "./index.css";
+import './index.css';
 
 const App = () => (
   <div className="container">
@@ -9,6 +10,7 @@ const App = () => (
     <div>Framework: react</div>
     <div>Language: JavaScript</div>
     <div>CSS: Empty CSS</div>
+    <Counter />
   </div>
 );
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));
