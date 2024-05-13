@@ -1,16 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Counter from './Pages/Counter';
+import { AuthProvider } from './AuthProvider';
+import { useRoutes } from 'react-router-dom';
+import { routes } from './Routes';
 
 import './index.css';
 
-const App = () => (
-  <div className="container">
-    <div>Name: sub-project</div>
-    <div>Framework: react</div>
-    <div>Language: JavaScript</div>
-    <div>CSS: Empty CSS</div>
-    <Counter />
-  </div>
-);
-ReactDOM.render(<App />, document.getElementById('app'));
+const App = () => {
+  const routing = useRoutes(routes());
+
+  return (
+    <AuthProvider>
+      {routing}
+      <div className="container">
+        <Counter />
+      </div>
+    </AuthProvider>
+  );
+};
+
+export default App;
